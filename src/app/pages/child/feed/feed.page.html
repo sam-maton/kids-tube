@@ -17,10 +17,11 @@
         <ion-card [button]="true" [routerLink]="`/video/${video.id.videoId}`">
           <img [src]="video.snippet.thumbnails.medium.url" alt="video thumbnail" />
           <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-subtitle color="secondary">{{video.snippet.channelTitle}}</ion-card-subtitle>
+            <ion-card-title>{{video.snippet.title}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            Here's a small text description for the card content. Nothing more, nothing less.
+            {{video.snippet.description}}
           </ion-card-content>
         </ion-card>
       </div>
