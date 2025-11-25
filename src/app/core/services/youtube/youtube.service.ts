@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, forkJoin, Observable, shareReplay, of } from 'rxjs';
 import { environment } from 'src/environments/environment.local';
-import type { YoutubeResponse, YoutubeVideo } from '../../types/youtube.types';
+import type {
+  YoutubeResponse,
+  YoutubeVideo,
+  ChannelVideos,
+} from '../../types/youtube.types';
 
 @Injectable({
   providedIn: 'root',
@@ -39,9 +43,17 @@ export class YoutubeService {
     );
   }
 
-  getFeedVideos(channelIds: string[]): Observable<YoutubeVideo[]> {
-    const calls = channelIds.map((id) => this.getChannelVideos(id));
-    return forkJoin(calls).pipe(map((resultArrays) => resultArrays.flat()));
+  getFeedVideos(channelIds: string[]): Observable<ChannelVideos[]> {
+    const calls = channelIds.map((channelId) =>
+      this.getChannelVideos(channelId).pipe(
+        map((videos) => ({
+          channelId,
+          videos,
+        })),
+      ),
+    );
+
+    return forkJoin(calls);
   }
 
   checkCache(channelId: string): YoutubeVideo[] | null {

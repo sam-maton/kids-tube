@@ -38,3 +38,8 @@ export interface YoutubeVideo {
     publishTime: string;
   };
 }
+
+export interface ChannelVideos {
+  channelId: string;
+  videos: YoutubeVideo[];
+}

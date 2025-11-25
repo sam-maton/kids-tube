@@ -18,7 +18,7 @@ import {
 import { YoutubeService } from 'src/app/core/services/youtube/youtube.service';
 import { APPROVED_CHANNELS } from 'src/app/core/data/approved-channels';
 import { Subject, takeUntil } from 'rxjs';
-import type { YoutubeVideo } from 'src/app/core/types/youtube.types';
+import type { ChannelVideos } from 'src/app/core/types/youtube.types';
 
 @Component({
   selector: 'app-feed',
@@ -48,7 +48,7 @@ export class FeedPage implements OnInit, OnDestroy {
 
   loading = true;
   error = false;
-  videos: YoutubeVideo[] = [];
+  channels: ChannelVideos[] = [];
 
   ngOnInit() {
     this.loadVideos();
@@ -60,8 +60,9 @@ export class FeedPage implements OnInit, OnDestroy {
     if (feedVideos) {
       feedVideos.pipe(takeUntil(this.destroy$)).subscribe({
         next: (data) => {
-          this.videos = data;
+          this.channels = data;
           this.loading = false;
+          console.log(data);
         },
         error: (err) => {
           console.error('Error fetching feed videos:', err);

@@ -1,14 +1,37 @@
 .child-feed {
   margin: 0 auto;
   max-width: 1320px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+
+  &__channel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    h2 {
+      margin-inline: 10px;
+    }
+  }
+
+  &__channel-videos {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   &__card-container {
     max-width: 320px;
   }
 }
+// .child-feed {
+//   margin: 0 auto;
+//   max-width: 1320px;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+
+//   &__card-container {
+//     max-width: 320px;
+//   }
+// }
 
 ion-toolbar {
   text-align: center;
