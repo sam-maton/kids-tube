@@ -2,5 +2,6 @@
   "typescript.preferences.autoImportFileExcludePatterns": [
     "@ionic/angular/common",
     "@ionic/angular"
-  ]
+  ],
+  "postman.settings.dotenv-detection-notification-visibility": false
 }
