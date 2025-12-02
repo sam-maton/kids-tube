@@ -2,12 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import {
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonToolbar } from '@ionic/angular/standalone';
 import { YouTubePlayer } from '@angular/youtube-player';
 
 @Component({
@@ -18,7 +13,6 @@ import { YouTubePlayer } from '@angular/youtube-player';
   imports: [
     IonContent,
     IonHeader,
-    IonTitle,
     IonToolbar,
     CommonModule,
     FormsModule,
