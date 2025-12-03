@@ -72,3 +72,8 @@ Thumbs.db
 # Environment files
 .env
 environment.local.ts
+
+# API folder
+/api/node_modules
+/api/dist
+/api/.env
