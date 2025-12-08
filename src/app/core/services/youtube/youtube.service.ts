@@ -6,7 +6,7 @@ import type {
   YoutubeResponse,
   YoutubeVideo,
   ChannelVideos,
-} from '../../types/youtube.types';
+} from '@shared/types/youtube.types';
 
 @Injectable({
   providedIn: 'root',
