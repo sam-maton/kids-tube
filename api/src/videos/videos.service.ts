@@ -30,6 +30,8 @@ export class VideosService {
       ),
     );
 
+    console.log('Data retrieved for channel: ' + channelId);
+
     return data;
   }
 }

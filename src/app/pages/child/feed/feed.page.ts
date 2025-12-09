@@ -18,7 +18,7 @@ import {
 import { YoutubeService } from 'src/app/core/services/youtube/youtube.service';
 import { APPROVED_CHANNELS } from 'src/app/core/data/approved-channels';
 import { Subject, takeUntil } from 'rxjs';
-import type { ChannelVideos } from 'src/app/core/types/youtube.types';
+import type { ChannelVideos } from '@shared/types/youtube.types';
 
 @Component({
   selector: 'app-feed',

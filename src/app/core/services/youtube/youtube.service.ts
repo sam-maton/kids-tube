@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, forkJoin, Observable, shareReplay, of } from 'rxjs';
-import { environment } from 'src/environments/environment.local';
 import type {
   YoutubeResponse,
   YoutubeVideo,
@@ -15,7 +14,6 @@ export class YoutubeService {
   //API String for channel searching
   // https://www.googleapis.com/youtube/v3/search?key=${this.API_KEY}&q=dog%20training&type=channel&part=snippet,id&maxResults=25
 
-  private API_KEY = environment.youtubeApiKey;
   private CACHE_KEY = 'youtube_video_cache';
 
   constructor(private http: HttpClient) {}
@@ -24,15 +22,12 @@ export class YoutubeService {
     // Check cache first
     const cached = this.checkCache(channelId);
     if (cached) {
-      console.log(`Cache HIT for channel ${channelId}`);
       return of(cached);
     }
 
-    console.log(`Cache MISS - API Call for channel ${channelId}`);
+    const videosEndpoint = 'http://localhost:3000/videos/' + channelId;
 
-    const apiString = `https://www.googleapis.com/youtube/v3/search?key=${this.API_KEY}&channelId=${channelId}&part=snippet,id&order=date&maxResults=10&type=video&videoDuration=medium`;
-
-    return this.http.get<YoutubeResponse>(apiString).pipe(
+    return this.http.get<YoutubeResponse>(videosEndpoint).pipe(
       map((res) => {
         const videos = res.items || [];
         // Store in cache
