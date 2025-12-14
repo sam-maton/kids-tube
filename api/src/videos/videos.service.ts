@@ -20,7 +20,7 @@ export class VideosService {
       throw new Error('YOUTUBE_API_KEY is not defined');
     }
 
-    const url = `https://www.googleapis.com/youtube/v3/search?key=${this.apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=10&type=video&videoDuration=medium`;
+    const url = `https://www.googleapis.com/youtube/v3/search?key=${this.apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=20&type=video&videoDuration=medium`;
 
     const { data } = await firstValueFrom(
       this.httpService.get<YoutubeResponse>(url).pipe(
