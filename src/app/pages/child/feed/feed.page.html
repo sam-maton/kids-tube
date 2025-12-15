@@ -35,12 +35,15 @@
         }
       </div>
     </div>
-    } @if(error){
-    <ion-text color="danger">
-      <p>Error loading videos. Please try again later.</p>
-    </ion-text>
-    } @if(loading){
-    <ion-spinner name="crescent"></ion-spinner>
     }
+    <div class="child-feed__status-container">
+      @if(error){
+      <ion-text color="danger">
+        <p>Error loading videos. Please try again later.</p>
+      </ion-text>
+      } @if(loading){
+      <ion-spinner name="crescent"></ion-spinner>
+      }
+    </div>
   </div>
 </ion-content>
